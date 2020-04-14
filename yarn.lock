@@ -753,10 +753,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@polka/send@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@polka/send/-/send-0.4.0.tgz#e2771c5671d36175832534ab886a884f75f31e6f"
-  integrity sha1-4nccVnHTYXWDJTSriGqIT3XzHm8=
+"@polka/send@^1.0.0-next.7":
+  version "1.0.0-next.7"
+  resolved "https://registry.yarnpkg.com/@polka/send/-/send-1.0.0-next.7.tgz#bb32be30913abea50245b85add61fe94267b3574"
+  integrity sha512-X/7sxWMfzuHuMXSls3SuOgfwcoNakuaNWciVS/KX3RML8NIPKQYgbhpqYPCujtXK9Z/KvW3/gzr2TUpabIJRMg==
 
 "@polka/url@^0.5.0":
   version "0.5.0"

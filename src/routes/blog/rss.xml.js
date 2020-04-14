@@ -29,7 +29,7 @@ const rss = `
 			<title>${post.data.title}</title>
 			<link>https://${domain}/blog/${post.data.slug}</link>
 			<description>${post.data.description}</description>
-			<pubDate>${formatPubdate(post.data.date)}</pubDate>
+			<pubDate>${formatPubdate(post.data.pubdate)}</pubDate>
 		</item>
 	`
     )

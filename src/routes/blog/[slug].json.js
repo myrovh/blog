@@ -1,32 +1,22 @@
-import marked from 'marked'
-import { getPost } from './_posts'
+import send from '@polka/send'
+import { getAllPosts } from './_posts'
 
-export function get(req, res, next) {
-  // the `slug` parameter is available because
-  // this file is called [slug].json.js
-  const { slug } = req.params
+let lookup
 
-  const { data, content } = getPost(slug)
-
-  const renderer = new marked.Renderer()
-
-  const html = marked(content, { renderer })
-
-  if (html) {
-    res.writeHead(200, {
-      'Content-Type': 'application/json',
+export function get(req, res) {
+  if (!lookup || process.env.NODE_ENV !== 'production') {
+    lookup = new Map()
+    getAllPosts().forEach((post) => {
+      lookup.set(post.data.slug, post)
     })
+  }
 
-    res.end(JSON.stringify({ html, ...data }))
+  const post = lookup.get(req.params.slug)
+
+  if (post) {
+    res.setHeader('Cache-Control', `max-age=${5 * 60 * 1e3}`) // 5 minutes
+    send(res, 200, post)
   } else {
-    res.writeHead(404, {
-      'Content-Type': 'application/json',
-    })
-
-    res.end(
-      JSON.stringify({
-        message: `Not found`,
-      })
-    )
+    send(res, 404, { message: 'not found' })
   }
 }

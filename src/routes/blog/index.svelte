@@ -33,7 +33,7 @@
 				waiting for the 'click' event -->
     <li>
       <a rel="prefetch" href="blog/{post.slug}">
-        {new Date(post.date).toLocaleDateString()}: {post.title}
+        {post.dateString}: {post.title}
       </a>
     </li>
   {/each}
