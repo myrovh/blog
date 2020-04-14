@@ -41,7 +41,7 @@
 <h1>YAY!</h1>
 
 <figure>
-  <img alt="Borat" src="smile.png" />
+  <img alt="siml" src="smile.png" />
   <figcaption>HIGH FIVE!</figcaption>
 </figure>
 

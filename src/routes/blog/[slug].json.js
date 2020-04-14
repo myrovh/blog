@@ -1,21 +1,23 @@
-import posts from './_posts.js'
-
-const lookup = new Map()
-posts.forEach((post) => {
-  lookup.set(post.slug, JSON.stringify(post))
-})
+import marked from 'marked'
+import { getPost } from './_posts'
 
 export function get(req, res, next) {
   // the `slug` parameter is available because
   // this file is called [slug].json.js
   const { slug } = req.params
 
-  if (lookup.has(slug)) {
+  const { data, content } = getPost(slug)
+
+  const renderer = new marked.Renderer()
+
+  const html = marked(content, { renderer })
+
+  if (html) {
     res.writeHead(200, {
       'Content-Type': 'application/json',
     })
 
-    res.end(lookup.get(slug))
+    res.end(JSON.stringify({ html, ...data }))
   } else {
     res.writeHead(404, {
       'Content-Type': 'application/json',
