@@ -1,48 +1,40 @@
+<script context="module">
+  export function preload({ params, query }) {
+    return this.fetch(`blog.json`)
+      .then((r) => r.json())
+      .then((posts) => {
+        return { posts }
+      })
+  }
+</script>
+
+<script>
+  export let posts
+</script>
+
 <style>
-  h1,
-  figure,
-  p {
-    text-align: center;
-    margin: 0 auto;
-  }
-
-  h1 {
-    font-size: 2.8em;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin: 0 0 0.5em 0;
-  }
-
-  figure {
+  ul {
     margin: 0 0 1em 0;
-  }
-
-  img {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 0 1em 0;
-  }
-
-  p {
-    margin: 1em auto;
-  }
-
-  @media (min-width: 480px) {
-    h1 {
-      font-size: 4em;
-    }
+    line-height: 1.5;
   }
 </style>
 
 <svelte:head>
-  <title>Sapper project template</title>
+  <title>myrovh's Blog</title>
 </svelte:head>
 
-<h1>YAY!</h1>
+<h1>Recent posts</h1>
 
-<figure>
-  <img alt="siml" src="smile.png" />
-  <figcaption>HIGH FIVE!</figcaption>
-</figure>
-
-<p>The about me page</p>
+<ul>
+  {#each posts as post}
+    <!-- we're using the non-standard `rel=prefetch` attribute to
+				tell Sapper to load the data for the page as soon as
+				the user hovers over the link or taps it, instead of
+				waiting for the 'click' event -->
+    <li>
+      <a rel="prefetch" href="blog/{post.slug}">
+        {post.dateString}: {post.title}
+      </a>
+    </li>
+  {/each}
+</ul>
