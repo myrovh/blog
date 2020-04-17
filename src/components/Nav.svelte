@@ -3,8 +3,11 @@
 </script>
 
 <style>
+  img {
+    width: 100px;
+    height: 100px;
+  }
   nav {
-    border-bottom: 1px solid rgba(255, 62, 0, 0.1);
     font-weight: 300;
     padding: 0 1em;
   }
@@ -29,16 +32,7 @@
   [aria-current] {
     position: relative;
     display: inline-block;
-  }
-
-  [aria-current]::after {
-    position: absolute;
-    content: '';
-    width: calc(100% - 1em);
-    height: 2px;
-    background-color: rgb(255, 62, 0);
-    display: block;
-    bottom: -1px;
+    font-weight: 500;
   }
 
   a {
@@ -46,22 +40,35 @@
     padding: 1em 0.5em;
     display: block;
   }
+
+  header {
+    display: flex;
+    padding: 3em;
+  }
 </style>
 
-<nav>
-  <ul>
-    <li>
-      <a
-        rel="prefetch"
-        aria-current={segment === undefined || segment === 'blog' ? 'page' : undefined}
-        href=".">
-        blog
-      </a>
-    </li>
-    <li>
-      <a aria-current={segment === 'about' ? 'page' : undefined} href="/about">
-        about
-      </a>
-    </li>
-  </ul>
-</nav>
+<header>
+  <img src="logo-192.png" alt="myrovh's profile pic" />
+  <div>
+    <nav>
+      <h1>myrovh's blog</h1>
+      <ul>
+        <li>
+          <a
+            rel="prefetch"
+            aria-current={segment === undefined || segment === 'blog' ? 'page' : undefined}
+            href=".">
+            blog
+          </a>
+        </li>
+        <li>
+          <a
+            aria-current={segment === 'about' ? 'page' : undefined}
+            href="/about">
+            about
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

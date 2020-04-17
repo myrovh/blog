@@ -5,6 +5,9 @@ body {
   font-size: 14px;
   line-height: 1.5;
   color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1,
