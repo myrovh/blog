@@ -42,6 +42,9 @@
   }
 
   header {
+    position: relative;
+    margin: 0 auto;
+    max-width: 46em;
     display: flex;
     padding: 3em;
   }

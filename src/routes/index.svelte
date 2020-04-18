@@ -13,11 +13,17 @@
 </script>
 
 <style>
+  ul {
+    padding: 0;
+  }
   .post {
-    border-style: solid;
-    border-width: 1px;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    list-style: none;
+    margin: 1.2em;
+    margin-bottom: 3em;
+    padding-top: 1.5em;
+    padding-left: 1.5em;
+    padding-bottom: 1.5em;
   }
 </style>
 
@@ -27,11 +33,13 @@
 
 <h1>Posts</h1>
 
-{#each posts as post}
-  <div class="post">
-    <a rel="prefetch" href="blog/{post.slug}">
-      <h1>{post.title}</h1>
-      <h2>{post.dateString}</h2>
-    </a>
-  </div>
-{/each}
+<ul>
+  {#each posts as post}
+    <li class="post">
+      <a rel="prefetch" href="blog/{post.slug}">
+        <h2>{post.title}</h2>
+      </a>
+      <h6>{post.dateString}</h6>
+    </li>
+  {/each}
+</ul>
