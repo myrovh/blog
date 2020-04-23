@@ -1,7 +1,5 @@
-html,
-body,
 #sapper {
-  height: 100%;
+  min-height: 100vh;
 }
 
 #sapper {
@@ -48,6 +46,10 @@ code {
   background-color: #f0f0f0;
   padding: 0.2em 0.4em;
   border-radius: 2px;
+}
+
+img {
+  max-width: 100%;
 }
 
 @media (min-width: 400px) {
