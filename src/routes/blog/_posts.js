@@ -3,6 +3,8 @@ import path from 'path'
 import grayMatter from 'gray-matter'
 import marked from 'marked'
 
+const renderer = new marked.Renderer()
+
 export const getAllPosts = () =>
   fs
     .readdirSync('content')
@@ -18,14 +20,16 @@ export const getAllPosts = () =>
         path.resolve('content', fileName),
         'utf-8'
       )
-      const { content, data, excerpt } = grayMatter(markdown)
+      const { content, data, excerpt } = grayMatter(markdown, {
+        excerpt_separator: '<!-- excerpt -->',
+      })
       const date = new Date(pubdate)
       data.slug = slug
       data.pubdate = pubdate
       data.dateString = date.toDateString()
 
-      const renderer = new marked.Renderer()
       const html = marked(content, { renderer })
-      return { data, excerpt, html }
+      const excerptHtml = marked(excerpt, { renderer })
+      return { data, excerptHtml, html }
     })
     .sort((a, b) => (a.data.pubdate < b.data.pubdate ? 1 : -1))

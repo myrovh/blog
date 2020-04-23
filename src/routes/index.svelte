@@ -21,9 +21,7 @@
     list-style: none;
     margin: 1.2em;
     margin-bottom: 3em;
-    padding-top: 1.5em;
-    padding-left: 1.5em;
-    padding-bottom: 1.5em;
+    padding: 1.5em;
   }
 </style>
 
@@ -40,6 +38,9 @@
         <h2>{post.title}</h2>
       </a>
       <h6>{post.dateString}</h6>
+      <div>
+        {@html post.excerptHtml}
+      </div>
     </li>
   {/each}
 </ul>

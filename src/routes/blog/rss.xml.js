@@ -10,6 +10,8 @@ function formatPubdate(str) {
   return `${d} ${months[+m]} ${y} 12:00 +0000`
 }
 
+// description should be derived from excerpt but stripped of any html to be a string
+
 const rss = `
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
