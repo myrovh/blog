@@ -1,6 +1,7 @@
 <style>
   footer {
     display: flex;
+    margin-top: auto;
     justify-content: center;
   }
   a {
