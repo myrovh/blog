@@ -14,10 +14,9 @@
     <!-- Sapper generates a <style> tag containing critical CSS -->
     %sapper.styles%
     <!-- This contains the contents of the <svelte:head> component -->
-    %sapper.head%
+    %sapper.head% %sapper.scripts%
   </head>
   <div id="sapper">%sapper.html%</div>
-  %sapper.scripts%
   <script
     data-goatcounter="https://myrovh.goatcounter.com/count"
     async

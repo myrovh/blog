@@ -2,8 +2,10 @@ import resolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
 import commonjs from '@rollup/plugin-commonjs'
 import svelte from 'rollup-plugin-svelte'
-import babel from 'rollup-plugin-babel'
+import babel from '@rollup/plugin-babel'
 import { terser } from 'rollup-plugin-terser'
+import autoPreprocess from 'svelte-preprocess'
+import typescript from '@rollup/plugin-typescript'
 import config from 'sapper/config/rollup.js'
 import pkg from './package.json'
 
@@ -12,6 +14,7 @@ const dev = mode === 'development'
 const legacy = !!process.env.SAPPER_LEGACY_BUILD
 
 const onwarn = (warning, onwarn) =>
+  (warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
   (warning.code === 'CIRCULAR_DEPENDENCY' &&
     /[/\\]@sapper[/\\]/.test(warning.message)) ||
   onwarn(warning)
@@ -29,7 +32,9 @@ export default {
         dev,
         hydratable: true,
         emitCss: true,
+        preprocess: autoPreprocess(),
       }),
+      typescript({ sourceMap: dev }),
       resolve({
         browser: true,
         dedupe: ['svelte'],
@@ -39,7 +44,7 @@ export default {
       legacy &&
         babel({
           extensions: ['.js', '.mjs', '.html', '.svelte'],
-          runtimeHelpers: true,
+          babelHelpers: 'runtime',
           exclude: ['node_modules/@babel/**'],
           presets: [
             [
@@ -80,7 +85,9 @@ export default {
       svelte({
         generate: 'ssr',
         dev,
+        preprocess: autoPreprocess(),
       }),
+      typescript({ sourceMap: dev }),
       resolve({
         dedupe: ['svelte'],
       }),
