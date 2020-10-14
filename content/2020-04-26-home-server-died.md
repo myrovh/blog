@@ -36,7 +36,7 @@ resolved with a quick reinstall of grub using the arch live disk.
 - `grub-mkconfig -o /boot/grub/grub.cfg`
 - confirm the reinstall worked with `efibootmgr -v`
 
-> I'm not really that clear on how UEFI works maybe doing a bios reset (when
+> I'm not really that clear on how UEFI works. Maybe doing a bios reset (when
 > trying to figure out what was wrong with the board) cleared whatever the UEFI
 > was using to remember what it was booting from? Something to look into in the
 > future.
