@@ -1,5 +1,7 @@
-<script context="module">
-  export async function preload({ params, query }) {
+<script context="module" lang="ts">
+  export async function preload({ params }) {
+    // the `slug` parameter is available because
+    // this file is called [slug].svelte
     const res = await this.fetch(`blog/${params.slug}.json`)
     const data = await res.json()
 
@@ -11,9 +13,19 @@
   }
 </script>
 
-<script>
-  export let post
+<script lang="ts">
+  export let post: { slug: string; title: string; html: any }
 </script>
+
+<svelte:head>
+  <title>{post.data.title}</title>
+</svelte:head>
+
+<h1>{post.data.title}</h1>
+
+<div class="content">
+  {@html post.html}
+</div>
 
 <style>
   /*
@@ -54,13 +66,3 @@
     max-width: 100%;
   }
 </style>
-
-<svelte:head>
-  <title>{post.data.title}</title>
-</svelte:head>
-
-<h1>{post.data.title}</h1>
-
-<div class="content">
-  {@html post.html}
-</div>

@@ -8,22 +8,14 @@
   }
 </script>
 
-<script>
-  export let posts
+<script lang="ts">
+  export let posts: {
+    excerptHtml: string
+    title: string
+    dateString: string
+    slug: string
+  }[]
 </script>
-
-<style>
-  ul {
-    padding: 0;
-  }
-  .post {
-    border: 1px solid #ddd;
-    list-style: none;
-    margin: 1.2em;
-    margin-bottom: 3em;
-    padding: 1.5em;
-  }
-</style>
 
 <svelte:head>
   <title>myrovh's Blog</title>
@@ -44,3 +36,16 @@
     </li>
   {/each}
 </ul>
+
+<style>
+  ul {
+    padding: 0;
+  }
+  .post {
+    border: 1px solid #ddd;
+    list-style: none;
+    margin: 1.2em;
+    margin-bottom: 3em;
+    padding: 1.5em;
+  }
+</style>
