@@ -3,7 +3,6 @@
   "theme_color": "#333333",
   "name": "myrovh blog",
   "short_name": "blog",
-  "display": "myrovh blog",
   "start_url": "/",
   "icons": [
     {
