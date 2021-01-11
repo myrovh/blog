@@ -6,10 +6,11 @@ import url from '@rollup/plugin-url'
 import svelte from 'rollup-plugin-svelte'
 import babel from '@rollup/plugin-babel'
 import { terser } from 'rollup-plugin-terser'
-import sveltePreprocess from 'svelte-preprocess'
 import typescript from '@rollup/plugin-typescript'
 import config from 'sapper/config/rollup.js'
 import pkg from './package.json'
+
+const { preprocess } = require('./svelte.config')
 
 const mode = process.env.NODE_ENV
 const dev = mode === 'development'
@@ -32,7 +33,7 @@ export default {
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
       svelte({
-        preprocess: sveltePreprocess(),
+        preprocess: [preprocess],
         compilerOptions: {
           dev,
           hydratable: true,
@@ -92,7 +93,7 @@ export default {
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
       svelte({
-        preprocess: sveltePreprocess(),
+        preprocess: [preprocess],
         compilerOptions: {
           dev,
           generate: 'ssr',

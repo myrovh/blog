@@ -1,25 +1,17 @@
 <script lang="ts">
   import Nav from '../components/Nav.svelte'
   import Footer from '../components/Footer.svelte'
+  import GlobalStyle from '../components/GlobalStyle.svelte'
 
   export let segment: string
 </script>
 
+<GlobalStyle />
+
 <Nav segment="{segment}" />
 
-<main>
+<main class="flex flex-row">
   <slot />
 </main>
 
 <Footer />
-
-<style>
-  main {
-    position: relative;
-    max-width: 56em;
-    background-color: white;
-    padding: 2em;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-</style>

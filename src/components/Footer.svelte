@@ -1,6 +1,6 @@
-<footer>
-  <a href="https://github.com/myrovh" rel="me" target="_blank">
-    <svg viewBox="0 0 24 24">
+<footer class="flex flex-row w-32 py-4 mx-auto mt-auto justify-evenly">
+  <a href="https://github.com/myrovh" rel="noopener" target="_blank" aria-label="myrovh's github" >
+    <svg class="w-8 h-8 svg-link" viewBox="0 0 24 24">
       <path
         d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58
         9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97
@@ -17,8 +17,8 @@
       />
     </svg>
   </a>
-  <a href="/blog/rss.xml">
-    <svg viewBox="0 0 24 24">
+  <a href="/blog/rss.xml" down aria-label="rss feed">
+    <svg class="w-8 h-8 svg-link" viewBox="0 0 24 24">
       <path
         d="M6.18,15.64A2.18,2.18 0 0,1 8.36,17.82C8.36,19 7.38,20 6.18,20C5,20
         4,19 4,17.82A2.18,2.18 0 0,1 6.18,15.64M4,4.44A15.56,15.56 0 0,1
@@ -30,16 +30,7 @@
 </footer>
 
 <style>
-  footer {
-    display: flex;
-    margin-top: auto;
-    justify-content: center;
-  }
-  a {
-    padding: 1em;
-  }
-  a {
-    height: 42px;
-    width: 42px;
+  .svg-link {
+    @apply text-gray-700 dark:text-gray-400 fill-current hover:text-gray-300 dark:hover:text-gray-100;
   }
 </style>

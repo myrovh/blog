@@ -21,31 +21,27 @@
   <title>myrovh's Blog</title>
 </svelte:head>
 
-<h1>Posts</h1>
-
-<ul>
+<div class="container max-w-sm px-4 mx-auto">
   {#each posts as post}
-    <li class="post">
-      <a rel="prefetch" href="blog/{post.slug}">
-        <h2>{post.title}</h2>
-      </a>
-      <h6>{post.dateString}</h6>
-      <div>
+    <section
+      class="p-8 pt-0 my-8 transition duration-500 ease-in-out rounded-md shadow-md hover:shadow-lg"
+    >
+      <h2
+        class="text-lg font-bold text-gray-700 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-100"
+      >
+        <a
+          class="inline-block w-full h-full py-3 pt-8"
+          rel="prefetch"
+          href="blog/{post.slug}">
+          {post.title}
+        </a>
+      </h2>
+      <h3 class="mb-2 text-sm text-gray-500 dark:text-gray-600">
+        {post.dateString}
+      </h3>
+      <div class="prose dark:prose-light">
         {@html post.excerptHtml}
       </div>
-    </li>
+    </section>
   {/each}
-</ul>
-
-<style>
-  ul {
-    padding: 0;
-  }
-  .post {
-    border: 1px solid #ddd;
-    list-style: none;
-    margin: 1.2em;
-    margin-bottom: 3em;
-    padding: 1.5em;
-  }
-</style>
+</div>
